@@ -1,0 +1,2 @@
+#!/bin/sh
+irb -Ilib -renvironment -rtest/test_helper
