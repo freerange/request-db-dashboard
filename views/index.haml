@@ -35,4 +35,4 @@
             %p.description slow requests (>1sec)
             .breakdown
               - @slow_requests.each do |request|
-                %p.description= request[0]
+                %p.description== #{request[0]} (#{request[1][:times]})
