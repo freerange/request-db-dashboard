@@ -7,3 +7,4 @@ gem "haml"
 gem "activerecord"
 
 gem "rack-test"
+gem "rake"

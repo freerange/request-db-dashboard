@@ -17,6 +17,12 @@ class DashboardTest < Test::Unit::TestCase
     ActiveRecord::Base.remove_connection # simulate no database connection
     get '/'
     assert last_response.body.include?('No Database Connection Found')
+
+    # reconnect - not nice, refactor later...
+      ActiveRecord::Base.establish_connection(
+        :adapter => "sqlite3",
+        :database => File.expand_path("../../data/requests.db", __FILE__)
+      )
   end
 
   def test_show_average_response_rate

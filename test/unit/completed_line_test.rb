@@ -1,4 +1,4 @@
-require '../test_helper'
+require 'test_helper'
 
 # testing on an example requests sqlite3 db
 class CompletedLineTest < Test::Unit::TestCase
