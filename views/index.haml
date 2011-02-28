@@ -21,14 +21,17 @@
       #header.row
         .eightcol
           %h1= @source.mtime.strftime("%d-%m-%Y")
-          %p.description== Showing only #{@filter_for_reponses} responses, #{@showing_for_requests} requests
+          %p.description== Showing only #{@filter_for_reponses} responses
         .fourcol.last.viewing
           %h1 Request Dashboard
           %p.description== DB (Total rows: #{@total_rows} Processed: #{@processed})
-      .row
+      .row.stats
         - if @no_db_connection
           %h2 Error: No Database Connection Found
 
+        .fourcol.stat_box
+          %p.number_stat= @showing_for_requests
+          %p.description requests
         - if @average_response_rate
           #average_response_rate.fourcol.stat_box
             %p.number_stat== #{(@average_response_rate * 1000).to_i}ms

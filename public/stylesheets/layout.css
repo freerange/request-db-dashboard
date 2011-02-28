@@ -13,7 +13,9 @@ body {
 #header {
   padding:5px 0px;
 }
-
+.stats {
+  padding:20px 0px;
+}
 .stat_box {
   text-align:center;
   min-height:200px;
@@ -21,6 +23,8 @@ body {
 }
 .number_stat {
   font-size:90px;
+  border:1px solid #666;
+  border-radius: 10px;
 }
 .description {
   font-size:12px;
