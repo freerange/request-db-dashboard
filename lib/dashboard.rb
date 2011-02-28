@@ -20,7 +20,7 @@ class Dashboard < Sinatra::Base
     begin
       @average_response_rate = Request.average_response_rate
       @slow_requests = Request.slow
-    rescue ActiveRecord::ConnectionNotEstablished
+    rescue ActiveRecord::ConnectionNotEstablished, ActiveRecord::StatementInvalid
       @no_db_connection = true
     end
     haml :index
