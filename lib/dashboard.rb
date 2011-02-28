@@ -17,7 +17,12 @@ class Dashboard < Sinatra::Base
   end
 
   get "/" do
-    @db_connection = ActiveRecord::Base.connected?
+    begin
+      @average_response_rate = Request.average_response_rate
+      @slow_requests = Request.slow
+    rescue ActiveRecord::ConnectionNotEstablished
+      @no_db_connection = true
+    end
     haml :index
   end
 end

@@ -5,5 +5,12 @@
   %body
     %h1 Request Dashboard
 
-    - unless @db_connection
+    - if @no_db_connection
       %h2 Error: No Database Connection Found
+
+    - if @average_response_rate
+      #average_response_rate
+        %p== #{(@average_response_rate * 1000).to_i}ms
+    - if @slow_requests
+      #slow_requests
+        %p= @slow_requests.size
