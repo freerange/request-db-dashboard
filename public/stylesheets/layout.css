@@ -1,0 +1,50 @@
+/* Layout for desktop version */
+
+h1,h2 {
+  font-weight:normal;
+}
+
+body {
+  font-family: Arial;
+}
+.stat_box {
+  text-align:center;
+  min-height:200px;
+  top:50%;
+}
+.number_stat {
+  font-size:90px;
+}
+.description {
+  font-size:12px;
+}
+
+#slow_requests .breakdown {
+  padding-top:10px;
+}
+
+/* Layout for mobile version */
+
+@media handheld, only screen and (max-width: 767px) {
+
+.examplecontainer {
+
+body {
+
+}
+
+}
+
+
+/* Provide higher res assets for iPhone 4 */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+/* An example of how to override an image with one twice the size for iPhone 4. Specify the original pixel size with background-size.
+.download {
+background: url(../img/downarrow@2x.png) no-repeat;
+background-size: 27px 28px;
+}
+*/
+
+}

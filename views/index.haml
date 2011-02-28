@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title Request Dashboard
+    %meta{:name=>"viewport",:content=>"width=device-width, initial-scale=1.0"}
+
+    <!-- The 1140px Grid -->
+    %link{:rel=>"stylesheet", :href=>"stylesheets/1140.css", :type=>"text/css", :media=>"screen"}
+
+    <!--[if lte IE 9]>
+    %link{:rel=>"stylesheet", :href=>"stylesheets/ie.css", :type=>"text/css", :media=>"screen"}
+    <![endif]-->
+
+    <!-- Resets grid for mobile -->
+    %link{:rel=>"stylesheet", :href=>"stylesheets/mobile.css", :media=>"handheld, only screen and (max-width: 767px)"}
+
+    %link{:rel=>"stylesheet", :href=>"stylesheets/layout.css", :media=>"screen"}
+    
+  %body
+    .container
+      .row
+        %h1 Request Dashboard
+        - if @no_db_connection
+          %h2 Error: No Database Connection Found
+
+      .row
+        - if @average_response_rate
+          #average_response_rate.fourcol.stat_box
+            %p.number_stat== #{(@average_response_rate * 1000).to_i}ms
+            %p.description average response rate
+        - if @slow_requests
+          #slow_requests.fourcol.last.stat_box
+            %p.number_stat= @slow_requests.size
+            %p.description slow requests (>1sec)
+            .breakdown
+              - @slow_requests.each do |request|
+                %p.description= request[0]
