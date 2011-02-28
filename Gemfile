@@ -8,3 +8,4 @@ gem "activerecord"
 
 gem "rack-test"
 gem "rake"
+gem "mocha"
