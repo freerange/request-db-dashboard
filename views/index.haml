@@ -15,16 +15,20 @@
     %link{:rel=>"stylesheet", :href=>"stylesheets/mobile.css", :media=>"handheld, only screen and (max-width: 767px)"}
 
     %link{:rel=>"stylesheet", :href=>"stylesheets/layout.css", :media=>"screen"}
-    
+
   %body
     .container
+      #header.row
+        .eightcol
+          %h1 Request Dashboard
+          .description
+            %p.description== DB (Total rows: #{@total_rows} Processed: #{@processed})
+        .fourcol.last.viewing
+          %h1= @source.mtime.to_date
       .row
-        %h1 Request Dashboard
         - if @no_db_connection
           %h2 Error: No Database Connection Found
-        .description
-          %p.description== Total rows: #{@total_rows} Processed: #{@processed}
-      .row
+
         - if @average_response_rate
           #average_response_rate.fourcol.stat_box
             %p.number_stat== #{(@average_response_rate * 1000).to_i}ms

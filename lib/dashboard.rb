@@ -18,8 +18,9 @@ class Dashboard < Sinatra::Base
 
   get "/" do
     begin
-      @average_response_rate = Request.average_response_rate
-      @slow_requests = Request.slow
+      @source = Source.last # use as default
+      @average_response_rate = Request.average_response_rate(@source)
+      @slow_requests = Request.slow(@source)
       @total_rows = Request.count
       @processed = Source.count
     rescue ActiveRecord::ConnectionNotEstablished, ActiveRecord::StatementInvalid

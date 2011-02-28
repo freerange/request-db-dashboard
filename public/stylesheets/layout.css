@@ -9,6 +9,11 @@ body {
   color:#fff;
   background-color:#121212;
 }
+
+#header {
+  padding:5px 0px;
+}
+
 .stat_box {
   text-align:center;
   min-height:200px;

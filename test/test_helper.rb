@@ -1,6 +1,7 @@
 require File.expand_path('../../environment',__FILE__)
 require 'test/unit'
 require 'rack/test'
+require 'mocha'
 
 ENV['RACK_ENV'] = 'test'
 
