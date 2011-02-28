@@ -17,6 +17,7 @@ class Dashboard < Sinatra::Base
   end
 
   get "/" do
+    @db_connection = ActiveRecord::Base.connected?
     haml :index
   end
 end

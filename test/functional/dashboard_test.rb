@@ -13,4 +13,10 @@ class DashboardTest < Test::Unit::TestCase
     assert last_response.body.include?('Request Dashboard')
   end
 
+  def test_when_no_database_say_so
+    ActiveRecord::Base.remove_connection # simulate no database connection
+    get '/'
+    assert last_response.body.include?('No Database Connection Found')
+  end
+
 end

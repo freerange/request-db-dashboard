@@ -4,3 +4,6 @@
     %title Request Dashboard
   %body
     %h1 Request Dashboard
+
+    - unless @db_connection
+      %h2 Error: No Database Connection Found
