@@ -22,7 +22,8 @@
         %h1 Request Dashboard
         - if @no_db_connection
           %h2 Error: No Database Connection Found
-
+        .description
+          %p.description== Total rows: #{@total_rows}
       .row
         - if @average_response_rate
           #average_response_rate.fourcol.stat_box
