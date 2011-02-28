@@ -37,4 +37,9 @@ class DashboardTest < Test::Unit::TestCase
     assert last_response.body.include?('11')
   end
 
+  def test_show_source_number
+    get "/"
+    assert last_response.body.include?('Processed: 1')
+  end
+
 end
