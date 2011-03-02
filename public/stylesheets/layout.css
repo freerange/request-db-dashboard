@@ -3,6 +3,13 @@
 h1,h2 {
   font-weight:normal;
 }
+h1 {
+  font-size:50px;
+}
+
+h2 {
+  
+}
 
 body {
   font-family: Arial;
@@ -11,7 +18,7 @@ body {
 }
 
 #header {
-  padding:5px 0px;
+  padding:50px 0px;
 }
 .stats {
   padding:20px 0px;
@@ -22,7 +29,7 @@ body {
   top:50%;
 }
 .number_stat {
-  font-size:90px;
+  font-size:170px;
   border:1px solid #666;
   border-radius: 10px;
 }
