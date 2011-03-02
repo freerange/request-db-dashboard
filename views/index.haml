@@ -25,27 +25,27 @@
         .fourcol.last.viewing
           %h1 Request Dashboard
           %p.description== DB (Total rows: #{@total_rows} Processed: #{@processed})
-      .row.stats
-        - if @no_db_connection
-          %h2 Error: No Database Connection Found
-
-        .fourcol.stat_box
-          %p.number_stat= @showing_for_requests
-          %p.description requests
-        - if @average_response_rate
-          #average_response_rate.fourcol.stat_box
-            - av_rate = (@average_response_rate * 1000).to_i
-            %p.number_stat{:class => (av_rate > 1000 ? "red" : "green")}== #{av_rate}ms
-            %p.description average response rate
-        - if @slow_requests
-          #slow_requests.fourcol.last.stat_box
-            - number_of_slow_requests = @slow_requests.size
-            %p.number_stat{:class => (number_of_slow_requests > 0 ? "red" : "green")}= number_of_slow_requests
-            %p.description slow requests (>1sec)
-            .breakdown
-              - @slow_requests.each do |request|
-                %p.description== #{request[0]} (#{request[1][:times]})
-      .row.stats
-        .fourcol.stat_box
-          %p.number_stat{:class => (@max > 1 ? "red" : "green")}= @max
-          %p.description Max request time
+      - if @no_db_connection
+        %h2 Error: No Database Connection Found
+      - else
+        .row.stats
+          .fourcol.stat_box
+            %p.number_stat= @showing_for_requests
+            %p.description requests
+          - if @average_response_rate
+            #average_response_rate.fourcol.stat_box
+              - av_rate = (@average_response_rate * 1000).to_i
+              %p.number_stat{:class => (av_rate > 1000 ? "red" : "green")}== #{av_rate}ms
+              %p.description average response rate
+          - if @slow_requests
+            #slow_requests.fourcol.last.stat_box
+              - number_of_slow_requests = @slow_requests.size
+              %p.number_stat{:class => (number_of_slow_requests > 0 ? "red" : "green")}= number_of_slow_requests
+              %p.description slow requests (>1sec)
+              .breakdown
+                - @slow_requests.each do |request|
+                  %p.description== #{request[0]} (#{request[1][:times]})
+        .row.stats
+          .fourcol.stat_box
+            %p.number_stat{:class => (@max > 1 ? "red" : "green")}= @max
+            %p.description Max request time
