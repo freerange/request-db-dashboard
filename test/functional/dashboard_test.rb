@@ -22,7 +22,7 @@ class DashboardTest < Test::Unit::TestCase
   def test_show_average_response_rate
     get "/"
     assert last_response.body.include?('average_response_rate')
-    assert last_response.body.include?('195ms')
+    assert last_response.body.include?('183ms')
   end
 
   def test_show_slow_requests

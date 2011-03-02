@@ -21,7 +21,7 @@
       #header.row
         .eightcol
           %h1= @source.mtime.strftime("%d-%m-%Y")
-          %p.description== Showing only http responses with status: #{@filter_for_reponses}
+          %p.description== Not showing: #{@remove_response}
         .fourcol.last.viewing
           %h1 Request Dashboard
           %p.description== DB (Total rows: #{@total_rows} Processed: #{@processed})
@@ -43,3 +43,5 @@
             .breakdown
               - @slow_requests.each do |request|
                 %p.description== #{request[0]} (#{request[1][:times]})
+      .row.stats
+        

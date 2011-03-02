@@ -20,11 +20,11 @@ class Dashboard < Sinatra::Base
     begin
       @source = Source.last # use as default
 
-      @filter_for_reponses = 200
+      @remove_response = 410
 
-      @average_response_rate = Request.average_response_rate(@source, @filter_for_reponses)
-      @slow_requests = Request.slow(@source, @filter_for_reponses)
-      @showing_for_requests = CompletedLine.where(:status => @filter_for_reponses).where(:source_id => @source.id).count
+      @average_response_rate = Request.average_response_rate(@source, @remove_response)
+      @slow_requests = Request.slow(@source, @remove_response)
+      @showing_for_requests = CompletedLine.where("status != 410").where(:source_id => @source.id).count
 
       @total_rows = Request.count
       @processed = Source.count
