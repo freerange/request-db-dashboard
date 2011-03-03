@@ -20,7 +20,7 @@
     .container
       #header.row
         .eightcol
-          %h1= @source.mtime.strftime("%d-%m-%Y")
+          %h1== Updated #{@source.mtime.strftime("%a %dth %b %Y")}
           %p.description== Not showing: #{@remove_response}
         .fourcol.last.viewing
           %h1 Request Dashboard
