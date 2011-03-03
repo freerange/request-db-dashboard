@@ -47,5 +47,7 @@
                   %p.description== #{request[0]} (#{request[1][:times]})
         .row.stats
           .fourcol.stat_box
-            %p.number_stat{:class => (@max > 1 ? "red" : "green")}= @max
+            %p.number_stat{:class => (@max > 1 ? "red" : "green")}== &gt;#{@max.to_i}s
             %p.description Max request time
+            .breakdown
+              %p.description== #{@max_processing_line.controller}##{@max_processing_line.action}.#{@max_processing_line.format}

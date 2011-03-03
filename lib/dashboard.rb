@@ -25,7 +25,9 @@ class Dashboard < Sinatra::Base
       @average_response_rate = Request.average_response_rate(@source, @remove_response)
       @slow_requests = Request.slow(@source, @remove_response)
       @showing_for_requests = CompletedLine.where("status != 410").where(:source_id => @source.id).count
-      @max = CompletedLine.maximum("duration")
+
+      @max = CompletedLine.where(:source_id => @source.id).maximum("duration")
+      @max_processing_line = Request.joins(:completed_line).where("completed_lines.source_id" => @source.id, "completed_lines.duration" => @max).first.processing_line
 
       @total_rows = Request.count
       @processed = Source.count
